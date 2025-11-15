@@ -23,7 +23,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// - `BlogContent` برای نمایش محتوای وبلاگ بر اساس وضعیت `BlogState` استفاده می‌شود.
 /// - پدینگ افقی به صورت واکنش‌گرا تنظیم می‌شود (۵٪ عرض صفحه برای موبایل و ۱۳٪ برای دسکتاپ).
 class BlogScreen extends StatefulWidget {
-  const BlogScreen({super.key});
+   const BlogScreen({super.key});
 
   @override
   State<BlogScreen> createState() => _BlogScreenState();

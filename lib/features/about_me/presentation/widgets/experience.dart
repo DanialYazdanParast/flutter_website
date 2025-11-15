@@ -26,7 +26,7 @@ class Experience extends StatelessWidget {
           _kVerticalSpacerL,
           SizedBox(
             height: 40,
-            child: BlogButton(
+            child: ButtonWidget(
               color: MyAppThemeConfig.of(context)
                   .green,
               text: "Tibobit Exchange",

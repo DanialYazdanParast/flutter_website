@@ -4,12 +4,12 @@ import 'package:datiego/core/router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-void main() async {
+void main()  {
   // 🎯 این خط حیاتی است
   WidgetsFlutterBinding.ensureInitialized();
 
   // ⚙️ مقداردهی اولیه وابستگی‌ها
-  await init();
+   init();
 
   // تنظیمات URL (برای وب)
   setUrlStrategy(PathUrlStrategy());

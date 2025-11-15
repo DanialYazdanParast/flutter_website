@@ -22,7 +22,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 final getIt = GetIt.instance;
 
 /// 📦 مقداردهی اولیه وابستگی‌ها
-Future<void> init() async {
+void init()  {
   /// 🛠️ تنظیم Dio با pretty_dio_logger
   final dio = Dio(
     BaseOptions(

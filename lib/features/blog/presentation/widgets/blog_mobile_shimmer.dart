@@ -86,7 +86,7 @@ class BlogMobileShimmer extends StatelessWidget {
                     // دکمه "Read More"
                     Align(
                       alignment: Alignment.bottomRight,
-                      child: BlogButton(
+                      child: ButtonWidget(
                         color: isDarkMode ? Colors.black54 : Colors.white,
                         text: "Read More",
                         onTap: () {},

@@ -12,7 +12,7 @@ const Map<TabItem, String> tabRoutes = {
   TabItem.home: ScreenGoRouter.home,
   TabItem.projects: ScreenGoRouter.projects,
   TabItem.blog: ScreenGoRouter.blog,
-  TabItem.about: ScreenGoRouter.about,
+  TabItem.about: ScreenGoRouter.aboutRoute,
 };
 
 /// **کلاس RootScreen**

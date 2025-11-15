@@ -79,7 +79,7 @@ class BlogMobile extends StatelessWidget {
                     // دکمه "Read More"
                     Align(
                       alignment: Alignment.bottomRight,
-                      child: BlogButton(
+                      child: ButtonWidget(
                         color: blogColor, // رنگ دکمه
                         text: "Read More", // متن دکمه
                         onTap: () {

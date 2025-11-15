@@ -103,7 +103,7 @@ class BlogDesktopShimmer extends StatelessWidget {
                         // دکمه "Read More" که به‌صورت شایمر نمایش داده می‌شود
                         Align(
                           alignment: Alignment.bottomRight,
-                          child: BlogButton(
+                          child: ButtonWidget(
                             color: isDarkMode ? Colors.black54 : Colors.white,
                             text: "Read More",
                             onTap: () {}, // عملکرد دکمه به طور موقت خالی است

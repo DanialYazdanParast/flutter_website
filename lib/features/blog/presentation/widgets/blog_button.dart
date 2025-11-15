@@ -23,7 +23,7 @@ import 'package:flutter/material.dart';
 ///   },
 /// )
 /// ```
-class BlogButton extends StatelessWidget {
+class ButtonWidget extends StatelessWidget {
   /// متن نمایش داده شده روی دکمه
   final String text;
 
@@ -36,7 +36,7 @@ class BlogButton extends StatelessWidget {
   final VoidCallback onTap;
 
   /// سازنده دکمه با نیاز به پارامترهای `text`, `color`, و `onTap`
-  const BlogButton({
+  const ButtonWidget({
     super.key,
     required this.text,
     required this.color,
