@@ -3,6 +3,8 @@ import 'package:datiego/features/about_me/presentation/widgets/little_bit_about_
 import 'package:datiego/features/about_me/presentation/widgets/skills.dart';
 import 'package:datiego/features/about_me/presentation/widgets/social_media.dart';
 
+import 'experience.dart';
+
 /// ویجت جزئیات پروفایل
 ///
 /// این ویجت شامل جزئیاتی از پروفایل کاربر است، مانند اطلاعات کوتاه درباره کاربر، مهارت‌ها، و لینک‌های رسانه‌های اجتماعی.
@@ -28,6 +30,8 @@ class ProfileDetailsWidget extends StatelessWidget {
     return Column(
       children: [
         const LittleBitAboutMe(), // نمایش اطلاعات کوتاهی درباره کاربر
+        const SizedBox(height: 24), // فاصله بین بخش‌ها
+        const Experience(),
         const SizedBox(height: 24), // فاصله بین بخش‌ها
         Skills(), // نمایش مهارت‌ها
         const SizedBox(height: 24), // فاصله بین بخش‌ها

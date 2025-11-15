@@ -27,18 +27,29 @@ class AppConstants {
 
   /// **📝 توضیح مختصری درباره‌ی من**
   /// این متن معرفی کوتاهی از دانیال یزدان پرست به‌عنوان توسعه‌دهنده‌ی فلاتر است.
+
   static String littleBitAboutMe =
-      "I'm Danial Yazdan Parast, a Flutter Developer with a deep passion for creating engaging and user-friendly digital experiences. "
-      "From a young age, I became fascinated with technology and started my journey by designing websites, creating blogs, and building chatrooms. "
-      "As I entered university and pursued an engineering degree, I expanded my programming skills in languages such as C++, Python, Java, and PHP. "
-      "Over the past year, I have focused on mastering the Flutter framework and have implemented several projects using this technology. "
-      "Although I am still at the beginning of my professional journey, I am continuously learning and growing in this field with great enthusiasm.\n\n"
-      "Beyond programming, I have a strong interest in trading in financial markets, which enhances my analytical and decision-making skills. "
-      "I am also passionate about football and exploring nature, as I believe these activities help refresh my mind and inspire more creative ideas.";
+      "I’m Danial Yazdan Parast, a passionate Flutter Developer dedicated to crafting seamless, intuitive, and user-centric digital experiences. "
+      "My fascination with technology began in childhood — building websites, blogs, and chatrooms — an early spark that evolved into a professional pursuit. "
+      "During my engineering studies, I strengthened my foundation in C++, Python, Java, and PHP. "
+      "Over the past two years, I’ve specialized in Flutter, delivering multiple cross-platform applications that showcase clean architecture, modern UI/UX, and innovative problem-solving. "
+      "Though early in my career, I approach every project with curiosity, discipline, and a relentless drive for growth.\n\n"
+      "Beyond code, I actively engage with financial markets — sharpening my analytical thinking and strategic decision-making. "
+      "I also recharge through football and nature exploration — activities that fuel creativity and keep me grounded.";
 
   /// **🎯 معرفی کوتاه (Profile Intro)**
   /// این متن برای معرفی مختصر دانیال یزدان پرست در پروفایل استفاده می‌شود.
+
   static String profileIntro =
-      "I am on my professional journey, designing digital experiences that are both efficient and engaging. "
-      "My goal is to simplify and improve technology to help people make their daily tasks easier and more enjoyable.";
+      "I build fast, modern, and user-friendly digital experiences. "
+      "My goal is to simplify technology and create products that make everyday tasks easier and more enjoyable for people.";
+
+
+  static String tibobitProject =
+      "Engineered a production-ready Flutter crypto trading app for Android/iOS, featuring real-time charts, spot trading, secure wallet, and referral system. "
+      "Collaborated on pixel-perfect UI with smooth animations using Figma; implemented robust security with biometrics, 2FA, and anti-phishing measures. "
+      "Boosted performance via MVVM + GetX architecture, Freezed for type-safety, and backend-driven push notifications. "
+      "Launched on Cafe Bazaar, Myket, and Sibche | Agile/Scrum workflow with Jira & Gitflow | Explore at tibobit.com";
+
+
 }

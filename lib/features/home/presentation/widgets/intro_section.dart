@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:datiego/confing/theme/app_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,82 +51,105 @@ class IntroSection extends StatelessWidget {
     final themeConfig = MyAppThemeConfig.of(context);
 
     return MouseRegion(
-      onEnter: (_) => context
-          .read<HomeBloc>()
-          .add(const SetMouseRegionEvent(true)), // فعال‌سازی حالت ماوس.
-      onExit: (_) => context
-          .read<HomeBloc>()
-          .add(const SetMouseRegionEvent(false)), // غیرفعال‌سازی حالت ماوس.
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(24), // گردی گوشه‌ها.
-        child: BackdropFilter(
-          filter:
-              ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0), // افکت مات (Blur).
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onPrimary, // رنگ پس‌زمینه.
-              borderRadius: BorderRadius.circular(24), // گردی گوشه‌ها.
-              boxShadow: customBoxShadow, // سایه‌های سفارشی.
-              border: customBorder(context), // حاشیه‌های سفارشی.
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10), // فاصله داخلی.
-              child: Column(
-                mainAxisAlignment:
-                    MainAxisAlignment.spaceAround, // هم‌ترازی عمودی.
-                crossAxisAlignment: CrossAxisAlignment.center, // هم‌ترازی افقی.
-                children: [
-                  _buildIntroRow(
-                    'Hi, I\'m', // متن معمولی.
-                    'datiego', // بخش برجسته.
-                    themeConfig.purple, // رنگ بخش برجسته.
-                    context,
-                    true, // نمایش تصویر.
-                    fontSize,
-                    sizeimage,
+          onEnter:
+              (_) => context.read<HomeBloc>().add(
+                const SetMouseRegionEvent(true),
+              ), // فعال‌سازی حالت ماوس.
+          onExit:
+              (_) => context.read<HomeBloc>().add(
+                const SetMouseRegionEvent(false),
+              ), // غیرفعال‌سازی حالت ماوس.
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(24), // گردی گوشه‌ها.
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 5.0,
+                sigmaY: 5.0,
+              ), // افکت مات (Blur).
+              child: Container(
+                height: height,
+                width: width,
+                decoration: BoxDecoration(
+                  color:
+                      Theme.of(context).colorScheme.onPrimary, // رنگ پس‌زمینه.
+                  borderRadius: BorderRadius.circular(24), // گردی گوشه‌ها.
+                  boxShadow: customBoxShadow, // سایه‌های سفارشی.
+                  border: customBorder(context), // حاشیه‌های سفارشی.
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10), // فاصله داخلی.
+                  child: Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment.spaceAround, // هم‌ترازی عمودی.
+                    crossAxisAlignment:
+                        CrossAxisAlignment.center, // هم‌ترازی افقی.
+                    children: [
+                      _buildIntroRow(
+                        'Hi, I\'m',
+                        // متن معمولی.
+                        'datiego',
+                        // بخش برجسته.
+                        themeConfig.purple,
+                        // رنگ بخش برجسته.
+                        context,
+                        true,
+                        // نمایش تصویر.
+                        fontSize,
+                        sizeimage,
+                      ),
+                      _buildIntroRow(
+                        'I\'m a',
+                        // متن معمولی.
+                        'Flutter Developer',
+                        // بخش برجسته.
+                        themeConfig.blue,
+                        // رنگ بخش برجسته.
+                        context,
+                        false,
+                        // عدم نمایش تصویر.
+                        fontSize,
+                        sizeimage,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          // رویداد دانلود رزومه.
+                          context.read<HomeBloc>().add(
+                            DownloadFileEvent(
+                              url: AppConstants.urlCv,
+                              fileName: "Danial-YazdanParast_Flutter.pdf",
+                            ),
+                          );
+                        },
+                        child: _buildIntroRow(
+                          'my cv',
+                          // متن معمولی.
+                          'Download ',
+                          // بخش برجسته.
+                          themeConfig.green,
+                          // رنگ بخش برجسته.
+                          context,
+                          false,
+                          // عدم نمایش تصویر.
+                          fontSize,
+                          sizeimage,
+                          isIcon: true
+                        ),
+                      ),
+                    ],
                   ),
-                  _buildIntroRow(
-                    'I\'m a', // متن معمولی.
-                    'Flutter Developer', // بخش برجسته.
-                    themeConfig.blue, // رنگ بخش برجسته.
-                    context,
-                    false, // عدم نمایش تصویر.
-                    fontSize,
-                    sizeimage,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      // رویداد دانلود رزومه.
-                      context.read<HomeBloc>().add(DownloadFileEvent(
-                          url: AppConstants.urlCv,
-                          fileName: "Danial-YazdanParast_Flutter.pdf"));
-                    },
-                    child: _buildIntroRow(
-                      'my cv', // متن معمولی.
-                      'Download ↗', // بخش برجسته.
-                      themeConfig.green, // رنگ بخش برجسته.
-                      context,
-                      false, // عدم نمایش تصویر.
-                      fontSize,
-                      sizeimage,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    )
+        )
         .animate() // اضافه کردن انیمیشن.
         .fadeIn(duration: 1000.ms, curve: Curves.easeIn) // انیمیشن ظهور تدریجی.
         .moveY(
-            begin: 50,
-            end: 0,
-            duration: 800.ms,
-            curve: Curves.easeOut); // انیمیشن حرکت عمودی.
+          begin: 50,
+          end: 0,
+          duration: 800.ms,
+          curve: Curves.easeOut,
+        ); // انیمیشن حرکت عمودی.
   }
 
   /// سازنده ردیف‌های متنی برای بخش معرفی.
@@ -140,35 +164,55 @@ class IntroSection extends StatelessWidget {
   /// - [image]: نمایش تصویر در کنار بخش برجسته.
   /// - [fontSize]: اندازه فونت.
   /// - [sizeimage]: اندازه تصویر (در صورت وجود).
-  Widget _buildIntroRow(String label, String highlight, Color color,
-      BuildContext context, bool image, double fontSize, double sizeimage) {
+  Widget _buildIntroRow(
+    String label,
+    String highlight,
+    Color color,
+    BuildContext context,
+    bool image,
+    double fontSize,
+    double sizeimage, {
+    bool isIcon = false,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center, // هم‌ترازی افقی در مرکز.
       children: [
         Text(
           label,
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge!
-              .copyWith(fontSize: fontSize, fontWeight: FontWeight.w400),
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+            fontSize: fontSize,
+            fontWeight: FontWeight.w400,
+          ),
         ),
         const SizedBox(width: 10), // فاصله بین متن معمولی و بخش برجسته.
         Container(
           padding: const EdgeInsets.symmetric(
-              horizontal: 10, vertical: 5), // فاصله داخلی.
+            horizontal: 10,
+            vertical: 5,
+          ), // فاصله داخلی.
           decoration: BoxDecoration(
             color: color, // رنگ پس‌زمینه بخش برجسته.
             borderRadius: BorderRadius.circular(12), // گردی گوشه‌ها.
           ),
           child: Row(
             children: [
-              Text(
-                highlight,
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              Row(
+                children: [
+                  Text(
+                    highlight,
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontSize: fontSize,
                       fontWeight: FontWeight.w400,
                       height: 1.1, // فاصله خطی.
                     ),
+                  ),
+                  isIcon
+                      ? Icon(
+                        CupertinoIcons.arrow_up_right,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      )
+                      : const SizedBox.shrink(),
+                ],
               ),
               if (image) // نمایش تصویر در صورت فعال بودن.
                 Image.asset(

@@ -61,14 +61,8 @@ class _BlogDetailScreenState extends State<BlogDetailScreen> {
                     duration:
                         const Duration(milliseconds: 500), // مدت زمان انیمیشن.
                     tween: Tween<EdgeInsets>(
-                      begin: EdgeInsets.only(
-                        top: 88,
-                        left: horizontalPadding, // حاشیه افقی شروع.
-                        right: horizontalPadding,
-                        bottom: 120,
-                      ),
                       end: EdgeInsets.only(
-                        top: 100,
+                        top: 88,
                         left: horizontalPadding, // حاشیه افقی پایان.
                         right: horizontalPadding,
                         bottom: 120,

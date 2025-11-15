@@ -103,6 +103,11 @@ class MyAppThemeConfig {
           fontSize: 24,
           fontWeight: FontWeight.w600,
         ),
+        titleSmall: TextStyle(
+          color: textPrimary,
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
         titleMedium: TextStyle(
           color: textSecondary,
           fontSize: 16,

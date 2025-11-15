@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:datiego/core/widgets/custom_border.dart';
 import 'package:datiego/core/widgets/custom_box_shadow.dart';
@@ -35,6 +36,7 @@ class BottomNavigationItem extends StatefulWidget {
   final String label;
   final Function() onTap;
   final bool isActive;
+  final bool isIcon;
   final Color color;
 
   const BottomNavigationItem({
@@ -44,6 +46,7 @@ class BottomNavigationItem extends StatefulWidget {
     required this.onTap,
     required this.isActive,
     required this.color,
+    this.isIcon = false,
   });
 
   @override
@@ -85,11 +88,21 @@ class _BottomNavigationItemState extends State<BottomNavigationItem> {
                       borderRadius: BorderRadius.circular(6),
                       boxShadow: customBoxShadow,
                       border: customBorder(context)),
-                  child: Text(widget.label,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(fontSize: 13, fontWeight: FontWeight.w500)),
+                  child: Row(
+                    children: [
+                      Text(widget.label,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(fontSize: 13, fontWeight: FontWeight.w500)),
+                      widget.isIcon
+                          ?  Icon(
+                        CupertinoIcons.arrow_up_right,
+                        size: 13,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ) : const SizedBox.shrink(),
+                    ],
+                  ),
                 ),
               ),
             ),

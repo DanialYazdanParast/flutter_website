@@ -16,58 +16,75 @@ import 'package:datiego/features/shared/data/data_source/remote/projects_remote_
 import 'package:datiego/features/shared/data/repository/projects_repository_impl.dart';
 import 'package:datiego/features/shared/domain/repository/projects_repository.dart';
 import 'package:datiego/features/shared/domain/use_cases/get_projects_usecase.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-/// **📌 تنظیمات GetIt برای مدیریت وابستگی‌ها در برنامه**
-///
-/// این فایل تمام وابستگی‌های مورد نیاز در برنامه را با استفاده از
-/// `GetIt` ثبت و مدیریت می‌کند.
-
-/// **📍 نمونه Singleton از `GetIt` برای مدیریت وابستگی‌ها**
+/// 📍 نمونه Singleton از GetIt
 final getIt = GetIt.instance;
 
-/// **📦 مقداردهی اولیه و ثبت وابستگی‌ها در `GetIt`**
-///
-/// این تابع تمام کلاس‌های مورد نیاز برنامه را رجیستر می‌کند تا در سراسر برنامه
-/// از طریق `GetIt` قابل دسترسی باشند.
+/// 📦 مقداردهی اولیه وابستگی‌ها
 Future<void> init() async {
-  /// **🛠️ تنظیم `Dio` برای ارتباط با API**
-  getIt.registerSingleton<Dio>(Dio(BaseOptions(baseUrl: AppConstants.baseUrl)));
+  /// 🛠️ تنظیم Dio با pretty_dio_logger
+  final dio = Dio(
+    BaseOptions(
+      baseUrl: AppConstants.baseUrl,
+    ),
+  );
 
-  /// **📊 ثبت `ProjectsRemoteDataSource` برای دریافت اطلاعات پروژه‌ها از سرور**
+  /// 🔥 اضافه کردن PrettyDioLogger برای نمایش در DevTools
+  dio.interceptors.add(
+    PrettyDioLogger(
+      requestHeader: true,
+      requestBody: true,
+      responseBody: false,
+      responseHeader: false,
+      error: true,
+      compact: true,
+      maxWidth: 90,
+      filter: (options, args) {
+        // می‌توانید فیلتر کنید کدام requestها لاگ شوند
+        return true;
+      },
+    ),
+  );
+
+  /// ثبت Dio در GetIt
+  getIt.registerSingleton<Dio>(dio);
+
+  /// 📊 ثبت ProjectsRemoteDataSource
   getIt.registerSingleton<ProjectsRemoteDataSource>(
       ProjectsRemoteDataSourceImpl(getIt.get()));
 
-  /// **🗂️ ثبت `ProjectsRepository` برای مدیریت داده‌های پروژه‌ها**
+  /// 🗂️ ثبت ProjectsRepository
   getIt.registerSingleton<ProjectsRepository>(
       ProjectsRepositoryImpl(getIt.get()));
 
-  /// **🔍 ثبت `GetProjectsUsecase` برای دریافت پروژه‌ها**
+  /// 🔍 ثبت GetProjectsUsecase
   getIt.registerSingleton<GetProjectsUsecase>(GetProjectsUsecase(getIt.get()));
 
-  /// **📥 ثبت `FileDownloaderRepository` برای دانلود فایل‌ها**
+  /// 📥 ثبت FileDownloaderRepository
   getIt.registerSingleton<FileDownloaderRepository>(
       FileDownloaderRepositoryImpl());
 
-  /// **⬇️ ثبت `DownloadFileUseCase` برای استفاده از قابلیت دانلود فایل**
-  getIt
-      .registerSingleton<DownloadFileUseCase>(DownloadFileUseCase(getIt.get()));
+  /// ⬇️ ثبت DownloadFileUseCase
+  getIt.registerSingleton<DownloadFileUseCase>(
+      DownloadFileUseCase(getIt.get()));
 
-  /// **🌐 ثبت `UrlLauncherService` برای باز کردن لینک‌ها در مرورگر**
+  /// 🌐 ثبت UrlLauncherService
   getIt.registerSingleton<UrlLauncherService>(UrlLauncherService());
 
-  /// **🛠️ ثبت `SkillsDataSource` برای دریافت مهارت‌ها**
+  /// 🛠️ ثبت SkillsDataSource
   getIt.registerSingleton<SkillsDataSource>(SkillsDataSourceImpl());
 
-  /// **📚 ثبت `SkillsRepository` برای مدیریت داده‌های مهارت‌ها**
+  /// 📚 ثبت SkillsRepository
   getIt.registerSingleton<SkillsRepository>(SkillsRepositoryImpl(getIt.get()));
 
-  /// **📝 ثبت `BlogDataSourceRemote` برای دریافت اطلاعات وبلاگ از سرور**
+  /// 📝 ثبت BlogDataSourceRemote
   getIt.registerSingleton<BlogDataSourceRemote>(
       BlogDataSourceRemoteImpl(getIt.get()));
 
-  /// **📖 ثبت `BlogRepository` برای مدیریت داده‌های وبلاگ**
+  /// 📖 ثبت BlogRepository
   getIt.registerSingleton<BlogRepository>(BlogRepositoryImpl(getIt.get()));
 
-  /// **🔎 ثبت `GetBlogUsecase` برای دریافت لیست مقالات وبلاگ**
+  /// 🔎 ثبت GetBlogUsecase
   getIt.registerSingleton<GetBlogUsecase>(GetBlogUsecase(getIt.get()));
 }

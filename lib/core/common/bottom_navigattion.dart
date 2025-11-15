@@ -60,16 +60,12 @@ class BottomNavigattion extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-              child: Container(
-                color: Colors.transparent,
-              ),
+              child: Container(color: Colors.transparent),
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(
-            bottom: 22,
-          ),
+          padding: const EdgeInsets.only(bottom: 22),
           child: Container(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.onPrimary,
@@ -80,7 +76,11 @@ class BottomNavigattion extends StatelessWidget {
             child: Container(
               color: Colors.transparent,
               padding: const EdgeInsets.only(
-                  left: 12, right: 12, top: 12, bottom: 4),
+                left: 12,
+                right: 12,
+                top: 12,
+                bottom: 4,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -134,10 +134,11 @@ class BottomNavigattion extends StatelessWidget {
                   ),
                   const SizedBox(width: 12),
                   BottomNavigationItem(
-                    label: 'danialyazdan77@gmail.com ↗',
+                    label: 'danialyazdan77@gmail.com',
                     iconFileName: Icons.email_outlined,
                     color: themeConfig.green,
                     isActive: false,
+                    isIcon: true,
                     onTap: () async {
                       await urlLauncher.sendEmail(AppConstants.emailUrl);
                     },
@@ -147,26 +148,28 @@ class BottomNavigattion extends StatelessWidget {
                       children: [
                         const SizedBox(width: 12),
                         BottomNavigationItem(
-                          label: '@DanialYazdanParast ↗',
+                          label: '@DanialYazdanParast',
                           iconFileName: FontAwesomeIcons.github,
                           color: themeConfig.gray,
                           isActive: false,
+                          isIcon: true,
                           onTap: () async {
                             await urlLauncher.openUrl(AppConstants.gitHubUrl);
                           },
                         ),
                         const SizedBox(width: 12),
                         BottomNavigationItem(
-                          label: '@DanialYazdanParast ↗',
+                          label: '@DanialYazdanParast',
                           iconFileName: FontAwesomeIcons.linkedin,
                           color: themeConfig.skyBlue,
                           isActive: false,
+                          isIcon: true,
                           onTap: () async {
                             await urlLauncher.openUrl(AppConstants.linkedinUrl);
                           },
                         ),
                       ],
-                    )
+                    ),
                 ],
               ),
             ),

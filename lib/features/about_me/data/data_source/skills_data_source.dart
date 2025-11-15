@@ -23,8 +23,11 @@ class SkillsDataSourceImpl implements SkillsDataSource {
           text: "Architecture (MVVM, MVC, Clean)",
           colorCode: 0xFFEF9A9A), // قرمز
       SkillModel(
-          text: "State Management (Provider, Bloc, Cubit)",
+          text: "State Management (Provider, Bloc, GetX)",
           colorCode: 0xFFA5D6A7), // سبز
+      SkillModel(
+          text: "RESTful API / WebSocket / Postman",
+          colorCode:  0xFF80CBC4), // سبز
       SkillModel(text: "Material and Custom Components", colorCode: 0xFFF48FB1),
       SkillModel(
           text: "Flutter Web / PWA",

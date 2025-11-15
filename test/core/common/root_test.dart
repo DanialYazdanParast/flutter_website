@@ -23,7 +23,7 @@ void main() {
     testWidgets('GestureDetector onTap navigates to project detail page',
         (WidgetTester tester) async {
       // ایجاد داده‌های تستی
-      final project = ProjectsEntities(
+      const project = ProjectsEntities(
         title: 'Test Project',
         image: 'https://example.com/image.jpg',
         subtitle: 'This is a test project.',
@@ -45,7 +45,7 @@ void main() {
           create: (_) => ProjectsBloc(getIt.get()),
           child: Builder(
             builder: (context) {
-              return ProjectCard(
+              return const ProjectCard(
                 index: 0,
                 project: project,
               );
