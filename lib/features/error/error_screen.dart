@@ -15,54 +15,58 @@ class ErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // بررسی حالت تاریک یا روشن بودن تم.
     final bool isDarkMode =
         Theme.of(context).colorScheme.brightness == Brightness.dark;
 
-    // پس‌زمینه گرادینتی که برای کل صفحه اعمال می‌شود.
-    final backgroundGradient = LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: isDarkMode
-          ? [
-        const Color(0x4A3E3B4F), // بنفش تیره نرم
-        const Color(0x4A4A4A6A), // آبی تیره نرم
-        const Color(0x4A3D5A6C), // فیروزه‌ای تیره نرم
-      ]
-          : [
-        const Color(0xFFFFD6E8), // صورتی روشن
-        const Color(0xFFE3E8FF), // آبی روشن
-        const Color(0xFFCFF0D6), // سبز روشن
-      ],
-    );
-
-    return Container(
-      decoration: BoxDecoration(gradient: backgroundGradient),
-      child: Align(
-        alignment: AlignmentDirectional.center,
-        // ویجت Responsive وظیفه انتخاب بین نسخه‌های مختلف کارت را دارد
-        // و انیمیشن *بعد* از انتخاب، روی ویجت نهایی اعمال می‌شود.
-        child: const Responsive(
-          desktop: _ErrorCard(
-            width: 435,
-            height: 235,
-            titleFontSize: 36,
-            messageFontSize: 28,
-            buttonHeight: 45,
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors:
+                isDarkMode
+                    ? [
+                      const Color(0x4a3E3B4F), // بنفش تیره نرم
+                      const Color(0x4a4A4A6A), // آبی تیره نرم
+                      const Color(0x4a3D5A6C), // فیروزه‌ای تیره نرم
+                    ]
+                    : [
+                      const Color(0xFFFFD6E8), // صورتی روشن
+                      const Color(0xFFE3E8FF), // آبی روشن
+                      const Color(0xFFCFF0D6), // سبز روشن
+                    ],
           ),
-          mobile: _ErrorCard(
-            width: 290,
-            height: 178,
-            titleFontSize: 26,
-            messageFontSize: 18,
-            buttonHeight: 40,
-          ),
-        ).animate() // انیمیشن *یک بار* روی ویجت خروجی اعمال می‌شود
-            .fadeIn(duration: 1000.ms, curve: Curves.easeIn)
-            .moveY(
-          begin: 50,
-          end: 0,
-          duration: 800.ms,
-          curve: Curves.easeOut,
+        ),
+        child: Align(
+          alignment: AlignmentDirectional.center,
+          // ویجت Responsive وظیفه انتخاب بین نسخه‌های مختلف کارت را دارد
+          // و انیمیشن *بعد* از انتخاب، روی ویجت نهایی اعمال می‌شود.
+          child: const Responsive(
+                desktop: _ErrorCard(
+                  width: 435,
+                  height: 235,
+                  titleFontSize: 36,
+                  messageFontSize: 28,
+                  buttonHeight: 45,
+                ),
+                mobile: _ErrorCard(
+                  width: 290,
+                  height: 178,
+                  titleFontSize: 26,
+                  messageFontSize: 18,
+                  buttonHeight: 40,
+                ),
+              )
+              .animate() // انیمیشن *یک بار* روی ویجت خروجی اعمال می‌شود
+              .fadeIn(duration: 1000.ms, curve: Curves.easeIn)
+              .moveY(
+                begin: 50,
+                end: 0,
+                duration: 800.ms,
+                curve: Curves.easeOut,
+              ),
         ),
       ),
     );
@@ -109,7 +113,10 @@ class _ErrorCard extends StatelessWidget {
             children: [
               // عنوان "404 Error"
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 5,
+                ),
                 decoration: BoxDecoration(
                   // فرض شده MyAppThemeConfig در دسترس است
                   color: MyAppThemeConfig.of(context).coral,

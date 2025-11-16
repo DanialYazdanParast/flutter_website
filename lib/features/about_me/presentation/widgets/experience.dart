@@ -83,7 +83,7 @@ class Experience extends StatelessWidget {
               const TextSegment(', '),
               const TextSegment('Myket', url: 'https://myket.ir/app/com.tibobit.app'),
               const TextSegment(' and '),
-              const TextSegment('Sibche', url: 'https://sibche.com/app/com.tibobit.app'),
+              const TextSegment('Sibche', url: 'https://sibche.com/applications/tibobit'),
               const TextSegment(' | '),
               const TextSegment('Agile/Scrum', isBold: true),
               const TextSegment(' workflow with '),

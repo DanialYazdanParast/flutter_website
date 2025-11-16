@@ -1,25 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--
-      If you are serving your web app in a path other than the root, change the
-      href value below to reflect the base path you are serving from.
-
-      The path provided below has to start and end with a slash "/" in order for
-      it to work correctly.
-
-      For more details:
-      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-      This is a placeholder for base href that will be replaced by the value of
-      the `--base-href` argument provided to `flutter build`.
-    -->
     <base href="$FLUTTER_BASE_HREF">
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="description"
-          content="datiego is a space to showcase my creativity in the world of Flutter development. Here, you can explore my projects, learn more about my professional journey, and discover the ideas I’m passionate about building.">
+          content="datiego is a space to showcase my creativity in the world of Flutter development. Explore my work and journey.">
 
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,11 +19,75 @@
 
     <title>datiego</title>
     <link rel="manifest" href="manifest.json">
+
+    <!-- Force HTML renderer (faster load, smaller build) -->
+    <script>
+        window.flutterWebRenderer = "html";
+    </script>
+
+    <!-- Preloader Styles -->
+    <style>
+        #datiego-loader {
+            position: fixed;
+            inset: 0;
+            background: #0f1724;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            z-index: 99999;
+            letter-spacing: 0.4px;
+        }
+
+        .loader-title {
+            font-size: 17px;
+            margin-top: 14px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .spinner {
+            width: 45px;
+            height: 45px;
+            border: 4px solid rgba(255, 255, 255, 0.22);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
+
 <body>
+
+<!-- Preloader -->
+<div id="datiego-loader">
+    <div class="spinner"></div>
+    <div class="loader-title">Loading your experience...</div>
+</div>
+
 <script>
-    window.flutterWebRenderer = "html";
+    // Remove preloader after Flutter draws the first frame
+    window.addEventListener('flutter-first-frame', function () {
+        const loader = document.getElementById('datiego-loader');
+        if (loader) loader.style.display = 'none';
+    });
+
+    // Safety fallback (max 8 seconds)
+    setTimeout(() => {
+        const loader = document.getElementById('datiego-loader');
+        if (loader) loader.style.display = 'none';
+    }, 8000);
 </script>
+
 <script src="flutter_bootstrap.js" async></script>
+
 </body>
 </html>
