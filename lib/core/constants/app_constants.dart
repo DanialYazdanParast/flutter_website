@@ -5,7 +5,7 @@ class AppConstants {
   static String urlCv = "https://datiego.ir/dl/Danial-YazdanParast_Flutter.pdf";
 
   /// **🌍 آدرس پایه‌ی API سرور**
-  static String baseUrl = 'https://dan.chbk.app/api/';
+  static String baseUrl = 'https://dan.chbk.dev/api/';
 
   /// **📧 ایمیل شخصی**
   static String emailUrl = 'danialyazdan77@gmail.com';
